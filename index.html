@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!--google fonts-->
+		<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+	<!--end-->
+	<!--font awesome-->
+		<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+	<!--end-->
+	<title>sample text</title>
+</head>
+<body>
+	<header>
+		<div class="header_left">
+			<h1>pHchecker</h1>
+		</div>
+		<div class="header_right">
+			<p>高知小津高等学校理数科</p>
+		</div>
+	</header>
+
+	<main>
+		<section class="input">
+			<label for="fileInput">ファイルを選択</label>
+			<input type="file" id="fileInput" name="file" multiple/>
+		</section>
+
+		<section class="result">
+			<div class="result_header">
+				<div class="result_header_upper">
+					<h2>Result</h2>
+				</div>
+				<div class="result_header_lower">
+					<ul id="total_result_lists">
+						<li><p>N : NaN</p></li>
+						<li><p>Mode : NaN</p></li>
+						<li><p>Average : NaN</p></li>
+						<li><p>SS : NaN</p></li>
+						<li><p>Min : NaN</p></li>
+						<li><p>Q1 : NaN</p></li>
+						<li><p>Q2 : NaN</p></li>
+						<li><p>Q3 : NaN</p></li>
+						<li><p>Max : NaN</p></li>
+					</ul>
+				</div>
+			</div>
+			<div class="result_main">
+				<ul id = "result_lists">
+					
+				</ul>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<canvas id="Canvas"></canvas>
+		<img src="" alt="" id="ImgSrc" css="display: none;">
+	</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="index.js" type="text/javascript"></script>
+</body>
+</html>
