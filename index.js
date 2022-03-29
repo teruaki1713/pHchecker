@@ -27,6 +27,15 @@ let max = 0;
 let min = 0;
 let ss = 0;
 
+//後々自作コードへ変換
+const shuffle = ([...array]) => {
+    for (let i = array.length - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 function createImageData(img) {
 
     var cv = document.createElement('canvas');
@@ -37,8 +46,10 @@ function createImageData(img) {
     var ct = cv.getContext('2d');
     ct.drawImage(img, 0, 0);
     var data = ct.getImageData(0, 0, cv.width, cv.height);
+
     return data;
 }
+
 
 let N = 0;
 
@@ -55,6 +66,7 @@ class IMG_DATA
         setTimeout(()=>{
             //画像情報
             this.ImgData = createImageData(ImgElement);
+
             this.Height  = ImgElement.height;
             this.Width   = ImgElement.width;
             this.name = name;
@@ -165,6 +177,7 @@ class IMG_DATA
 
             //閾値を設定
             this.T = DistributedData.indexOf(Math.min.apply(null,DistributedData));
+            console.log(this.T);
 
             //閾値未満、以上に仕分ける
             let LowerPoint = [];
@@ -280,6 +293,25 @@ class IMG_DATA
                     total_blue_flat.push(i);
                 }
             }
+
+            var sample1 = [];
+            var sample2 = [];
+            var sample3 = [];
+            for(var i = 0; i<256; i++)
+            {
+                sample1.push(0);
+                sample2.push(0);
+                sample3.push(0);
+            }
+            for(var i = 0; i < total_red_flat.length; i++)
+            {
+                sample1[total_red_flat[i]] += 1;
+                sample2[total_green_flat[i]] += 1;
+                sample3[total_blue_flat[i]] += 1;
+            }
+            console.log(sample1);
+            console.log(sample2);
+            console.log(sample3);
 
             //ターゲットの平均RGB値を算出
             var sum1 = 0;
@@ -400,12 +432,10 @@ InputElement.addEventListener('change', (ev) => {
         if(i == ev.target.files.length-1){
             clearInterval(roop);
         }
-
-        if(i == 10){
-            clearInterval(roop);
-            alert("10枚以上の画像は処理できません。");
-        }
-
         i++;
     },5000);
 }, false);
+
+
+var va = 0;
+
